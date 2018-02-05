@@ -1,0 +1,22 @@
+{
+  "name": "gitbook-plugin-shell",
+  "description": "Gitbook plugin to add shells.",
+  "main": "index.js",
+  "license": "MIT",
+  "homepage": "https://github.com/davidmogar/gitbook-plugin-shell",
+  "version": "0.0.1",
+  "engines": {
+    "gitbook": ">2.5.0"
+  },
+  "author": {
+    "name": "David Moreno-García",
+    "email": "david.mogar@gmail.com"
+  },
+  "bugs": {
+    "url": "https://github.com/davidmogar/gitbook-plugin-shell/issues"
+  },
+  "gitbook": {
+    "properties": {
+    }
+  }
+}
