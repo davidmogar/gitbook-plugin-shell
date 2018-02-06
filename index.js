@@ -1,22 +1,4 @@
-function addCopyTextarea() {
-  var body = document.getElementsByTagName('body')[0];
-  var textarea ='<textarea id="shell-textarea" />';
-
-  body.appendChild(textarea);
-}
-
 function create_command_line(block, prompt) {
-//  command = document.createElement('span');
-//  command.classList.add('shell-command');
-//  command.textContent = (block.args[0] || '').trim();
-//
-//  line = document.createElement('span');
-//  line.classList.add('shell-line shell-command-line');
-//  line.textContent = prompt;
-//  line.appendChild(command);
-//
-//  return line;
-
   return '<span class="shell-line shell-command-line">' + prompt +
          '<span class="shell-command">' + (block.args[0] || '').trim() +
          '</span></span>';
@@ -94,8 +76,6 @@ module.exports = {
         block.blocks.forEach(function(sub_block) {
           switch(sub_block.name) {
             case 'command':
-              //body = document.getElementsByTagName('body')[0];
-              //body.appendChild(create_command_line(sub_block, prompt));
               lines.push(create_command_line(sub_block, prompt));
               break;
             case 'prompt':
@@ -108,8 +88,6 @@ module.exports = {
               break;
           }
         });
-
-        //addCopyTextarea();
 
         return '<div class="shell ' + style + ' ' + disabled +
                '">' + lines.join('\n') + '</div>';
