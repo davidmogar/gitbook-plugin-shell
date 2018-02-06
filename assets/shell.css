@@ -10,6 +10,10 @@
   display: block;
 }
 
+.shell .shell-log-line {
+  white-space: pre-wrap;
+}
+
 .shell.shell-no-break {
   overflow-x: auto;
 }
@@ -37,6 +41,7 @@
 .shell-modern .shell-path {
   color: #dedede;
 }
+.shell-modern .shell-delimiter { color: #60b0e5; }
 .shell-modern .shell-error { color: #f55; }
 .shell-modern .shell-prompt { color: #28c66e; }
 .shell-modern .shell-warning { color: #d93; }

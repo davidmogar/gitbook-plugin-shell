@@ -1,6 +1,6 @@
 function create_command_line(block, prompt) {
   return '<span class="shell-line shell-command-line">' + prompt +
-         '<span class="shell-command">' + (block.args[0] || '').trim() +
+         '<span class="shell-command">' + (block.body || '').trim() +
          '</span></span>';
 }
 
