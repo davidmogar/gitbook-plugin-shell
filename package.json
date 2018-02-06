@@ -16,7 +16,6 @@
     "url": "https://github.com/davidmogar/gitbook-plugin-shell/issues"
   },
   "gitbook": {
-    "properties": {
-    }
+    "properties": {}
   }
 }

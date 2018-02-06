@@ -1,3 +1,42 @@
+.shell {
+  border-radius: 3px;
+  font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace;
+  font-size: 14px;
+  margin-bottom: 1em;
+  padding: 1em;
+}
+
 .shell .shell-line {
   display: block;
 }
+
+.shell.shell-no-break {
+  overflow-x: auto;
+}
+.shell.shell-no-break .shell-line {
+  white-space: nowrap;
+}
+
+.shell:not(.shell-no-copy) .shell-command {
+  cursor: pointer;
+}
+
+.shell:not(.shell-no-fade) .shell-log-line,
+.shell:not(.shell-no-fade) .shell-prompt {
+  transition: opacity 0.3s ease-in-out;
+}
+
+.shell:not(.shell-no-fade):hover .shell-log-line,
+.shell:not(.shell-no-fade):hover .shell-prompt {
+  opacity: 0.3;
+}
+
+.shell-modern { background: #2b3d50; }
+.shell-modern .shell-command,
+.shell-modern .shell-info,
+.shell-modern .shell-path {
+  color: #dedede;
+}
+.shell-modern .shell-error { color: #f55; }
+.shell-modern .shell-prompt { color: #28c66e; }
+.shell-modern .shell-warning { color: #d93; }
