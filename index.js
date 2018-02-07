@@ -1,10 +1,10 @@
-function create_command_line(block, prompt) {
+function createCommandLine(block, prompt) {
   return '<span class="shell-line shell-command-line">' + prompt +
          '<span class="shell-command">' + (block.body || '').trim() +
          '</span></span>';
 }
 
-function create_log_lines(block) {
+function createLogLines(block) {
   var block_lines = block.body.split('\n');
   var lines = [];
 
@@ -18,30 +18,43 @@ function create_log_lines(block) {
 
   for (var i = 0; i < block_lines.length; i++) {
     lines.push('<span class="shell-line shell-log-line shell-' +
-               block.name.trim() + '">' + block_lines[i] + '</span>');
+               block.name.trim() + '">' + escapeHTML(block_lines[i]) + '</span>');
   }
 
   return lines.join('\n');
 }
 
-function create_prompt(block) {
+function createPrompt(block) {
   var text = block.args.join(' ');
   var prompt = '<span class="shell-prompt">' + (block.args[0] || '');
 
   if ('path' in block.kwargs) {
-    prompt += create_prompt_component('path', block.kwargs['path']);
+    prompt += createPromptComponent('path', block.kwargs['path']);
     prompt += (block.args[1] || '');
   }
 
   if ('delimiter' in block.kwargs) {
-    prompt += create_prompt_component('delimiter', block.kwargs['delimiter']);
+    prompt += createPromptComponent('delimiter', block.kwargs['delimiter']);
   }
 
   return prompt + '</span>';
 }
 
-function create_prompt_component(key, value) {
+function createPromptComponent(key, value) {
   return '<span class="shell-' + key + '">' + value + '</span>';
+}
+
+function escapeHTML(html_str) {
+  return html_str.replace(/[&<>"]/g, function (tag) {
+    var chars_to_replace = {
+        '&': '&ampl;',
+        '<': '&lt;',
+        '>': '&gt;',
+        '"': '&quot;'
+    };
+
+    return chars_to_replace[tag] || tag;
+  });
 }
 
 module.exports = {
@@ -76,15 +89,15 @@ module.exports = {
         block.blocks.forEach(function(sub_block) {
           switch(sub_block.name) {
             case 'command':
-              lines.push(create_command_line(sub_block, prompt));
+              lines.push(createCommandLine(sub_block, prompt));
               break;
             case 'prompt':
-              prompt = create_prompt(sub_block);
+              prompt = createPrompt(sub_block);
               break;
             case 'error':
             case 'info':
             case 'warning':
-              lines.push(create_log_lines(sub_block));
+              lines.push(createLogLines(sub_block));
               break;
           }
         });
